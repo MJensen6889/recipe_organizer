@@ -5,11 +5,11 @@ from django.db import models
 
 class Recipe(models.Model):
     name = models.CharField(max_length=100, blank=True, null=True)
-    # ingredient_quantities = models.ManyToManyField('Ingredient_Quantity')  HOW TO DO THIS?
     ingredients = models.ManyToManyField('Ingredient')
     categories = models.CharField(max_length=50)
     description = models.TextField()
     instructions = models.TextField()
+    photo = models.CharField(max_length=200, blank=True, null=True)
 
     def __unicode__(self):
         return self.name

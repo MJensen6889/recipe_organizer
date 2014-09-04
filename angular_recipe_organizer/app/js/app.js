@@ -19,14 +19,14 @@ angular.module('myApp', [
                 title: 'Recipe List'
             })
 
-            .when('/view2', {
-                templateUrl: 'partials/partial2.html',
-                controller: 'MyCtrl2',
-                title: 'View 2'
+            .when('/add-recipe', {
+                templateUrl: 'partials/add-recipe.html',
+                controller: 'AddRecipeCtrl',
+                title: 'Add a Recipe'
             })
 
             .otherwise({
-                redirectTo: '/view1'
+                redirectTo: '/recipes'
             });
 
         RestangularProvider.setBaseUrl('http://localhost:8001');

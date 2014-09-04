@@ -1,14 +1,16 @@
 <div class="container">
     <div ng-repeat="recipe in recipes">
-        <img src="{{ recipe.photo }}" width="350px"/>
 
-        <p class="recipe-name">{{ recipe.name }}</p>
+
+        <h1 class="recipe-name">{{ recipe.name }}</h1>
+
+        <img src="{{ recipe.photo }}" width="350px"/>
 
         <p class="recipe-desc">{{ recipe.description }}</p>
 
-        <p>{{ recipe.categories }}</p>
+        <p class="recipe-cat"><strong>Category:</strong> {{ recipe.categories }}</p>
 
-        <p>Ingredients</p>
+        <p class="recipe-ing"><strong>Ingredients:</strong></p>
         <ul ng-repeat="ingredient in recipe.ingredients">
             <li>{{ ingredient.name }}</li>
         </ul>

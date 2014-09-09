@@ -52,6 +52,45 @@
 
 .recipe-ing {
     font-size: 13pt;
-    font-family: Garamond;
     padding-left: 10pt;
+}
+
+.panel-height {
+    height: 455px;
+}
+
+.panel-b {
+    position: absolute;
+    bottom: 25px;
+}
+
+#pic-adj {
+    height: 250px;
+    width: 357px;
+    overflow: hidden;
+}
+
+.ingredient-buttons{
+    margin-top: 10px;
+    margin-bottom: 10px;
+}
+
+#plus-button {
+    margin-bottom: 10px;
+}
+
+.carousel-control.left {
+    background-image: none;
+}
+
+.carousel-control.right {
+    background-image: none;
+}
+
+.carousel-indicators {
+    position: relative;
+}
+
+.glyphicon-chevron-left {
+    outline-color: red;
 }

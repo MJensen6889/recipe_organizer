@@ -8,7 +8,8 @@ angular.module('myApp', [
     'myApp.services',
     'myApp.directives',
     'myApp.controllers',
-    'restangular'
+    'restangular',
+    'ui.bootstrap'
 
 ]).
     config(['$routeProvider', 'RestangularProvider', function ($routeProvider, RestangularProvider) {

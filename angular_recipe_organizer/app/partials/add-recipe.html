@@ -1,39 +1,55 @@
 <div class="container">
     <h1>Add a New Recipe</h1>
 
-    <div class="form-group  col-lg-6">
+    <div class="form-group col-lg-6">
         <label>Name</label>
         <input ng-model="recipe.name"
                class="form-control">
     </div>
 
-    <div class="form-group  col-lg-6">
+    <div class="col-lg-6" ng-class="{'has-error':(createNewIngredient && newIngredient.$error)}">
         <label>Ingredients</label>
-        <input ng-model="recipe.ingredients.name"
-               class="form-control">
+            <select size="5" multiple ng-model="recipe.ingredients" ng-options="ingredient.id as ingredient.name for ingredient in ingredients | orderBy:'name'"
+                    ng-hide="createNewIngredient" class="form-control"></select>
+        <button class="btn btn-default" ng-click="addIngredient()" ng-hide="createNewIngredient" id="plus-button">
+            <span class="glyphicon glyphicon-plus"></span>
+        </button>
+        <input type="text" ng-model="newIngredient.name" class="form-control" ng-show="createNewIngredient">
+        <div class="ingredient-buttons" ng-show="createNewIngredient">
+            <button class="btn btn-primary" ng-click="saveIngredient(newIngredient.name)">add</button>
+            <button class="btn btn-danger" ng-click="cancelIngredient()">cancel</button>
+            <span ng-show="newIngredient.$error" class="alert alert-danger">Ingredient already exists</span>
+        </div>
     </div>
 
-    <div class="form-group  col-lg-6">
+    <div class="form-group col-lg-6">
         <label>Description</label>
         <input ng-model="recipe.description"
                class="form-control">
     </div>
 
-    <div class="form-group  col-lg-6">
+    <div class="form-group col-lg-6">
         <label>Instructions</label>
         <input ng-model="recipe.instructions"
                class="form-control">
     </div>
 
-    <div class="form-group  col-lg-6">
+    <div class="form-group col-lg-6">
         <label>Rating</label>
         <input ng-model="recipe.rating"
                class="form-control">
     </div>
 
-    <div class="form-group  col-lg-6">
+    <div class="form-group col-lg-6">
         <label>Photo (url)</label>
         <input ng-model="recipe.photo"
+               class="form-control">
+    </div>
+    
+{#    Need to make the category field a selection field similar to Ingredients#}
+    <div class="form-group col-lg-6">
+        <label>Category</label>
+        <input ng-model="recipe.categories"
                class="form-control">
     </div>
     

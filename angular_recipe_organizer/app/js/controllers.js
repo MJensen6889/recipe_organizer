@@ -59,6 +59,8 @@ angular.module('myApp.controllers', [])
 
     .controller('AddRecipeCtrl', ['$scope', 'Restangular', function ($scope, Restangular) {
 
+        $scope.searchTerm = "";
+
         $scope.addIngredient = function() {
             $scope.createNewIngredient = true;
         };
@@ -113,6 +115,22 @@ angular.module('myApp.controllers', [])
         };
     }])
 
-    .controller('RecipeDetailsCtrl', ['$scope', 'Restangular', function ($scope, Restangular) {
+    .controller('RecipeDetailsCtrl', ['$scope', '$routeParams', 'Restangular',  function ($scope, $routeParams, Restangular) {
+        $scope.editing = false;
+        var id = $routeParams.id;
+        Restangular.one("recipes", id).get().then(function(recipe){
+            $scope.recipe = recipe
+        });
+        $scope.saveRecipe = function() {
+            $scope.recipe.put();
+            $scope.editing=false;
+        }
+        $scope.deleteRecipe = function() {
+            if(confirm("Are you sure you want to delete this recipe?")) {
+                $scope.recipe.remove();
+                $scope.editing = false;
+                window.location = "#/recipes"
+            }
+        }
 
     }]);

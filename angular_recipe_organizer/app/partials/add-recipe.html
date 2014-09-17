@@ -7,12 +7,14 @@
                class="form-control">
     </div>
 
-    <div class="col-lg-6" ng-class="{'has-error':(createNewIngredient && newIngredient.$error)}">
+    <div class="col-lg-3" ng-class="{'has-error':(createNewIngredient && newIngredient.$error)}">
         <label>Ingredients</label>
-            <select size="5" multiple ng-model="recipe.ingredients" ng-options="ingredient.id as ingredient.name for ingredient in ingredients | orderBy:'name'"
-                    ng-hide="createNewIngredient" class="form-control"></select>
+            <input type="text" ng-model="searchTerm" class="form-control" typeahead="ingredient.id as ingredient.name for
+            ingredient in ingredients | orderBy:'name' | filter:searchTerm" typeahead-on-select="recipe.ingredients.push(searchTerm)">
+        <p ng-repeat="ingredient in recipe.ingredients track by $index">{{ ingredient.name }}</p>
+
         <button class="btn btn-default" ng-click="addIngredient()" ng-hide="createNewIngredient" id="plus-button">
-            <span class="glyphicon glyphicon-plus"></span>
+            <span class="fa fa-cutlery"></span>
         </button>
         <input type="text" ng-model="newIngredient.name" class="form-control" ng-show="createNewIngredient">
         <div class="ingredient-buttons" ng-show="createNewIngredient">
@@ -46,7 +48,7 @@
                class="form-control">
     </div>
     
-{#    Need to make the category field a selection field similar to Ingredients#}
+My notes - Need to make the category field a selection field similar to Ingredients -- Also create a type-ahead directive instead of ingredients list
     <div class="form-group col-lg-6">
         <label>Category</label>
         <input ng-model="recipe.categories"

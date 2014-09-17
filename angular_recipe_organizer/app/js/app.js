@@ -26,6 +26,12 @@ angular.module('myApp', [
                 title: 'Add a Recipe'
             })
 
+            .when('/recipes/:id', {
+                templateUrl: 'partials/recipe-details.html',
+                controller: 'RecipeDetailsCtrl',
+                title: 'Recipe Details'
+            })
+
             .otherwise({
                 redirectTo: '/recipes'
             });

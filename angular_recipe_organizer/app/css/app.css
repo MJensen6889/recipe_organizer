@@ -94,3 +94,40 @@
 .glyphicon-chevron-left {
     outline-color: red;
 }
+
+.icon {
+  width: 24px;
+  height: 24px;
+}
+
+.top-bar {
+    height: 80px;
+    background-color: #ffffff;
+    opacity: .80;
+    border: none;
+
+}
+
+.burger-carousel {
+    margin-top: 30px;
+}
+
+.navbar-default .navbar-nav > li > a:hover {
+    color: red;
+    /*background-color: red;*/
+}
+
+.navbar-default .navbar-nav > li > a {
+    color: black;
+    /*background-color: red;*/
+}
+
+.center-navbar {
+    margin-top: 15px;
+}
+
+.card-custom {
+    border-color: red;
+    width: 365px;
+    border-width: 4px;
+}

@@ -1,6 +1,8 @@
 <!-- Header Carousel -->
-        <div carousel interval="slideInterval">
+        <div carousel interval="slideInterval" class="burger-carousel">
+
             <div slide ng-repeat="slide in slides" active="slide.active">
+
                 <img ng-src="{{slide.image}}" style="margin:auto; height:300px;">
             </div>
         </div>
@@ -16,14 +18,15 @@
                 </h1>
             </div>
             <div ng-repeat="recipe in recipes" class="col-md-4">
-                <div class="panel panel-success panel-height">
-                    <div class="panel-heading">
+                <div class="panel panel-height card-custom">
+                    <div class="panel-heading card-heading">
                         <h4><i class="fa fa-fw fa-check"></i>{{ recipe.name }}</h4>
                     </div>
                     <img src="{{ recipe.photo }}" id="pic-adj" />
                     <div class="panel-body panel-b">
                         <p>{{ recipe.description }}</p>
                         <a href="#/recipes/{{ recipe.id }}" class="btn btn-default">Learn More</a>
+                        <a href="#/edit-recipe/{{ recipe.id }}"><button class="btn btn-xs btn-info edit-button">Edit</button></a>
                     </div>
                 </div>
             </div>

@@ -133,4 +133,22 @@ angular.module('myApp.controllers', [])
             }
         }
 
-    }]);
+    }])
+
+    .controller('EditRecipeCtrl', function($scope, Restangular, $routeParams, $location) {
+        $scope.recipeId = $routeParams.recipeId;
+
+        Restangular.one('recipes', $scope.recipeId).customGET().then(function (data) {
+            $scope.recipe = data;
+        });
+
+        $scope.updateRecipe = function() {
+            Restangular.one('recipes', $scope.recipeId).customPUT($scope.recipe).then(function (data) {
+                $scope.status = "The recipe was successfully edited!";
+                $scope.recipe = data;
+                $location.path('/recipes');
+            }, function() {
+                $scope.status = "The recipe couldn't be saved";
+            }
+        )};
+    });

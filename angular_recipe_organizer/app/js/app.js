@@ -26,6 +26,12 @@ angular.module('myApp', [
                 title: 'Add a Recipe'
             })
 
+            .when('/edit-recipe/:recipeId', {
+                templateUrl: 'partials/edit-recipe.html',
+                controller: 'EditRecipeCtrl',
+                title: 'Edit Recipe'
+            })
+
             .when('/recipes/:id', {
                 templateUrl: 'partials/recipe-details.html',
                 controller: 'RecipeDetailsCtrl',

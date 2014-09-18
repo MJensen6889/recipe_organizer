@@ -1,11 +1,13 @@
-<h1 ng-hide="editing">{{ recipe.name }}</h1>
-<button class="btn btn-default" ng-click="editing=true" ng-hide="editing">edit recipe</button>
-<button class="btn btn-default" ng-click="saveRecipe()" ng-show="editing">save recipe</button>
-<button class="btn btn-warning" ng-click="deleteRecipe()" ng-show="editing">delete recipe</button>
-<input type="text" ng-model="recipe.name" ng-show="editing">
-<img src="{{ recipe.photo }}"/>
-<h4>{{ recipe.categories }}</h4>
-<h4>{{ recipe.rating }}</h4>
-<h4>{{ recipe.description }}</h4>
-<p ng-repeat="ingredient in recipe.ingredients">{{ ingredient.name }}</p>
-<h4>{{ recipe.instructions }}</h4>
+<div class="container">
+    <h1 ng-hide="editing">{{ recipe.name }}</h1>
+    <button class="btn btn-default" ng-click="editing=true" ng-hide="editing">edit recipe</button>
+    <button class="btn btn-default" ng-click="saveRecipe()" ng-show="editing">save recipe</button>
+    <button class="btn btn-warning" ng-click="deleteRecipe()" ng-show="editing">delete recipe</button>
+    <input type="text" ng-model="recipe.name" ng-show="editing">
+    <img src="{{ recipe.photo }}"/>
+    <h4>{{ recipe.categories }}</h4>
+    <h4>{{ recipe.rating }}</h4>
+    <h4>{{ recipe.description }}</h4>
+    <p ng-repeat="ingredient in recipe.ingredients">{{ ingredient.name }}</p>
+    <h4>{{ recipe.instructions }}</h4>
+</div>

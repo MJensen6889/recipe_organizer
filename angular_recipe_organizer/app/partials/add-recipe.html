@@ -1,61 +1,86 @@
-<div class="container">
+<div class="container" style="margin-top: 40px">
     <h1>Add a New Recipe</h1>
+    <div class="row">
+        <div class="form-group col-lg-6">
+            <label>Name</label>
+            <input ng-model="recipe.name"
+                   class="form-control">
+        </div>
 
-    <div class="form-group col-lg-6">
-        <label>Name</label>
-        <input ng-model="recipe.name"
-               class="form-control">
+
+        <div class="col-lg-3" ng-class="{'has-error':(createNewIngredient && newIngredient.$error)}">
+
+            <div>
+                <label>Ingredients</label>
+                    <input type="text" ng-model="searchTerm" class="form-control" typeahead="ingredient.name for
+                    ingredient in ingredients | orderBy:'name' | filter:searchTerm" typeahead-on-select="recipe.ingredients.push(searchTerm)">
+                <p ng-repeat="ingredient in recipe.ingredients track by $index">{{ ingredient.name }}</p>
+            </div>
+
+    <!-- Add Ingredient Button -->
+
+
+    <!-- List of ingredients in this recipe -->
+            <ol>
+                <li ng-repeat="ingredient in recipe.ingredients">{{ ingredient.name }}</li>
+            </ol>
+            <input type="text" ng-model="newIngredient.name" class="form-control" ng-show="createNewIngredient">
+            <div class="ingredient-buttons" ng-show="createNewIngredient">
+                <button class="btn btn-primary" ng-click="saveIngredient(newIngredient.name)">add</button>
+                <button class="btn btn-danger" ng-click="cancelIngredient()">cancel</button>
+                <span ng-show="newIngredient.$error" class="alert alert-danger">Ingredient already exists</span>
+            </div>
+        </div>
+
+        <div class="col-lg-1">
+
+                <label>&nbsp;</label>
+                <button class="btn btn-default" ng-click="addIngredient()" ng-hide="createNewIngredient" id="plus-button">
+                    Add ingredient <span class="fa fa-plus"></span>
+                </button>
+
+        </div>
+
+
     </div>
 
-    <div class="col-lg-3" ng-class="{'has-error':(createNewIngredient && newIngredient.$error)}">
-        <label>Ingredients</label>
-            <input type="text" ng-model="searchTerm" class="form-control" typeahead="ingredient.id as ingredient.name for
-            ingredient in ingredients | orderBy:'name' | filter:searchTerm" typeahead-on-select="recipe.ingredients.push(searchTerm)">
-        <p ng-repeat="ingredient in recipe.ingredients track by $index">{{ ingredient.name }}</p>
+    <div class="row">
+        <div class="form-group col-lg-6">
+            <label>Description</label>
+            <input ng-model="recipe.description"
+                   class="form-control">
+        </div>
 
-        <button class="btn btn-default" ng-click="addIngredient()" ng-hide="createNewIngredient" id="plus-button">
-            <span class="fa fa-cutlery"></span>
-        </button>
-        <input type="text" ng-model="newIngredient.name" class="form-control" ng-show="createNewIngredient">
-        <div class="ingredient-buttons" ng-show="createNewIngredient">
-            <button class="btn btn-primary" ng-click="saveIngredient(newIngredient.name)">add</button>
-            <button class="btn btn-danger" ng-click="cancelIngredient()">cancel</button>
-            <span ng-show="newIngredient.$error" class="alert alert-danger">Ingredient already exists</span>
+        <div class="form-group col-lg-6">
+            <label>Instructions</label>
+            <input ng-model="recipe.instructions"
+                   class="form-control">
         </div>
     </div>
 
-    <div class="form-group col-lg-6">
-        <label>Description</label>
-        <input ng-model="recipe.description"
-               class="form-control">
+    <div class="row">
+        <div class="form-group col-lg-6">
+            <label>Rating</label>
+            <input ng-model="recipe.rating"
+                   class="form-control">
+        </div>
+
+        <div class="form-group col-lg-6">
+            <label>Photo (url)</label>
+            <input ng-model="recipe.photo"
+                   class="form-control">
+        </div>
     </div>
 
-    <div class="form-group col-lg-6">
-        <label>Instructions</label>
-        <input ng-model="recipe.instructions"
-               class="form-control">
+    <div class="row">
+        <div class="form-group col-lg-6">
+            <label>Category</label>
+            <input ng-model="recipe.categories"
+                   class="form-control">
+        </div>
     </div>
 
-    <div class="form-group col-lg-6">
-        <label>Rating</label>
-        <input ng-model="recipe.rating"
-               class="form-control">
-    </div>
-
-    <div class="form-group col-lg-6">
-        <label>Photo (url)</label>
-        <input ng-model="recipe.photo"
-               class="form-control">
-    </div>
-    
-My notes - Need to make the category field a selection field similar to Ingredients -- Also create a type-ahead directive instead of ingredients list
-    <div class="form-group col-lg-6">
-        <label>Category</label>
-        <input ng-model="recipe.categories"
-               class="form-control">
-    </div>
-    
-    <button class="btn btn-block btn-success"
-            ng-click="addRecipe()">Add Recipe</button>
+    <button class="btn btn-block btn-success fa fa-cutlery fa-2x" ng-click="addRecipe()" style="height: 60px">
+        <span style="font-size: 22pt; font-weight: bold">Add Recipe</span></button>
     
 </div>

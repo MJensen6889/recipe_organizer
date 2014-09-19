@@ -12,12 +12,14 @@
 
         <!-- Marketing Icons Section -->
         <div class="row">
-            <div class="col-lg-12">
-                <h1 class="page-header">
-                    featured recipes
+         <!--   <div class="col-lg-12">  -->
+                <h1 class="page-header text-right">
+                    <span style="color: #585858">{{ search.name }}<span ng-hide="search.name">featured</span> recipes</span>
+                    <span class="col-lg-3"><input ng-model="search.name" placeholder="Search Through Recipes" class="form-control"></span>
                 </h1>
-            </div>
-            <div ng-repeat="recipe in recipes" class="col-md-4">
+         <!--   </div>  -->
+
+            <div ng-repeat="recipe in recipes | filter:search" class="col-md-4">
                 <div class="panel panel-height card-custom">
                     <div class="panel-heading card-heading">
                         <h4><i class="fa fa-fw fa-check"></i>{{ recipe.name }}</h4>

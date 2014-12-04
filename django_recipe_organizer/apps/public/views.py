@@ -22,7 +22,7 @@ class IngredientList(generics.ListCreateAPIView):
 
 class AddRecipe(generics.CreateAPIView):
     model = Recipe
-    serializer_class = RecipeSerializer
+    serializer_class = RecipeCreateSerializer
     queryset = Recipe.objects.all()
 
 

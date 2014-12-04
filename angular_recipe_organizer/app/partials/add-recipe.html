@@ -12,9 +12,9 @@
 
             <div>
                 <label>Ingredients</label>
-                    <input type="text" ng-model="searchTerm" class="form-control" typeahead="ingredient.name for
-                    ingredient in ingredients | orderBy:'name' | filter:searchTerm" typeahead-on-select="recipe.ingredients.push(searchTerm)">
-                <p ng-repeat="ingredient in recipe.ingredients track by $index">{{ ingredient.name }}</p>
+                    <input type="text" ng-model="searchTerm" class="form-control" typeahead="ingredient as ingredient.name for
+                    ingredient in ingredients | orderBy:'name' | filter:searchTerm" typeahead-on-select="recipe.ingredients.push(searchTerm)"/>
+                <!-- <p ng-repeat="ingredient in recipe.ingredients track by $index">{{ ingredient.name }}</p> -->
             </div>
 
     <!-- Add Ingredient Button -->

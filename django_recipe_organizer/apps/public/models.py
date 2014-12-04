@@ -10,7 +10,7 @@ class Recipe(models.Model):
     rating = models.IntegerField(blank=True, null=True)
     description = models.TextField(default="No description has been entered yet.")
     instructions = models.TextField(default="No instructions have been added yet.")
-    photo = models.CharField(max_length=200, blank=True, null=True)
+    photo = models.CharField(max_length=10000, blank=True, null=True)
 
     def __unicode__(self):
         return self.name

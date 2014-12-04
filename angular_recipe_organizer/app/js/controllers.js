@@ -99,6 +99,10 @@ angular.module('myApp.controllers', [])
         $scope.recipe = { ingredients: []};
 
         $scope.addRecipe = function() {
+            for (var i in $scope.recipe.ingredients) {
+                var ing = $scope.recipe.ingredients[i];
+                $scope.recipe.ingredients[i] = ing.id;
+            }
             Restangular.all('add-recipe/').customPOST($scope.recipe).then(function() {
                 alert("Your recipe was successfully added!");
                 $scope.recipe = { ingredients: []};

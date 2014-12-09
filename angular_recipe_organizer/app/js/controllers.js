@@ -6,7 +6,7 @@ angular.module('myApp.controllers', [])
     .controller('RecipeCtrl', ['$scope', 'Restangular', function ($scope, Restangular) {
 
         // GET a list of all recipes
-        Restangular.all('recipes').getList().then(function (recipes) {
+        Restangular.all('recipes/').getList().then(function (recipes) {
             $scope.recipes = recipes;
         })
 
@@ -93,7 +93,7 @@ angular.module('myApp.controllers', [])
 
 
 
-        Restangular.all("ingredients").getList().then(function(ingredients) {
+        Restangular.all("ingredients/").getList().then(function(ingredients) {
             $scope.ingredients = ingredients;
         } );
         $scope.recipe = { ingredients: []};
@@ -115,7 +115,7 @@ angular.module('myApp.controllers', [])
     .controller('RecipeDetailsCtrl', ['$scope', '$routeParams', 'Restangular',  function ($scope, $routeParams, Restangular) {
         $scope.editing = false;
         var id = $routeParams.id;
-        Restangular.one("recipes", id).get().then(function(recipe){
+        Restangular.one("recipes/", id).get().then(function(recipe){
             $scope.recipe = recipe
         });
         $scope.saveRecipe = function() {
@@ -135,12 +135,12 @@ angular.module('myApp.controllers', [])
     .controller('EditRecipeCtrl', function($scope, Restangular, $routeParams, $location) {
         $scope.recipeId = $routeParams.recipeId;
 
-        Restangular.one('recipes', $scope.recipeId).customGET().then(function (data) {
+        Restangular.one('recipes/', $scope.recipeId).customGET().then(function (data) {
             $scope.recipe = data;
         });
 
         $scope.updateRecipe = function() {
-            Restangular.one('recipes', $scope.recipeId).customPUT($scope.recipe).then(function (data) {
+            Restangular.one('recipes/', $scope.recipeId).customPUT($scope.recipe).then(function (data) {
                 $scope.status = "The recipe was successfully edited!";
                 $scope.recipe = data;
                 $location.path('/recipes');

@@ -105,7 +105,6 @@
     background-color: #ffffff;
     opacity: .90;
     border: none;
-
 }
 
 .view-margin {
@@ -114,12 +113,10 @@
 
 .navbar-default .navbar-nav > li > a:hover {
     color: red;
-    /*background-color: red;*/
 }
 
 .navbar-default .navbar-nav > li > a {
     color: black;
-    /*background-color: red;*/
 }
 
 .center-navbar {
